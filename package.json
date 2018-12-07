@@ -1,0 +1,53 @@
+{
+  "name": "feedback-wc",
+  "dependencies": {
+    "@babel/polyfill": "7.0.0",
+    "@polymer/polymer": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "@babel/plugin-proposal-class-properties": "7.2.1",
+    "@babel/plugin-proposal-object-rest-spread": "7.2.0",
+    "@babel/preset-env": "7.2.0",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "babel-core": "^7.0.0-0",
+    "babel-loader": "7.1.5",
+    "http-server": "0.11.1",
+    "istanbul-instrumenter-loader": "3.0.1",
+    "jasmine": "^3.2.0",
+    "jasmine-ajax": "3.4.0",
+    "jasmine-core": "^3.2.0",
+    "karma": "^0.13.2",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage": "1.1.2",
+    "karma-coverage-istanbul-reporter": "2.0.1",
+    "karma-jasmine": "^1.1.2",
+    "karma-jasmine-ajax": "0.1.13",
+    "karma-mocha-reporter": "2.2.5",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-webpack": "^2.0.0",
+    "mkdirp": "0.5.1",
+    "polymer-build": "3.1.1",
+    "polymer-cli": "1.9.1",
+    "webpack": "^2.2.1"
+  },
+  "scripts": {
+    "rimraf": "rimraf",
+    "clean": "rimraf -- build",
+    "clean:coverage": "rimraf -- coverage",
+    "preassets": "rimraf build/assets && mkdirp build/assets",
+    "assets": "npm run polyserve && npm run wcl",
+    "wcl": "cp -r node_modules/@webcomponents/webcomponentsjs build/assets",
+    "polyserve": "cat node_modules/polymer-build/lib/regenerator-runtime.min.js node_modules/polymer-build/lib/babel-helpers-full.min.js assets/polyserve.min.js > build/assets/polyserve.min.js",
+    "cpindex": "cp index.html build",
+    "removedev": "find build -name \"*.dev.js\" -delete",
+    "start": "polymer serve",
+    "start:prod": "npm run compile:prod && npm run serve:prod",
+    "build": "polymer build",
+    "compile": "polymer build --name dev",
+    "precompile:prod": "npm run clean",
+    "compile:prod": "polymer build && npm run assets && npm run removedev && npm run cpindex",
+    "tar": "tar czf feedback-wc.tar.gz -C build .",
+    "serve:prod": "http-server build --ssl -p 8443"
+  }
+}

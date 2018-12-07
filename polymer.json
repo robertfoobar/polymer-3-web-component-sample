@@ -1,0 +1,42 @@
+{
+  "npm": true,
+  "shell": "src/app.js",
+  "sources": [
+    "src/**.js",
+    "manifest/**",
+    "package.json",
+    "styles/**"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/bundles/**",
+    "node_modules/@webcomponents/shadycss/**/*.js",
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js",
+    "node_modules/@polymer/polymer/*.js"
+  ],
+  "builds": [
+    {
+      "name": "es6",
+      "preset": "uncompiled-unbundled"
+    },
+    {
+      "name": "es5",
+      "preset": "es5-bundled",
+      "html": { "minify": false},
+      "addServiceWorker": false
+    },
+    {
+      "name": "dev",
+      "js": {"minify": false, "compile": false},
+      "css": {"minify": false},
+      "html": {"minify": false},
+      "bundle": false,
+      "addPushManifest": false
+    }
+  ],
+  "lint": {
+    "rules": [
+      "polymer-3"
+    ]
+  }
+}
