@@ -1,5 +1,5 @@
 # Sample Polymer 3 Web Component
-Code in here is written in ES6 based on the [Polymer|https://polymer-project.org] framework.
+Code in here is written in ES6 based on the [Polymer](https://polymer-project.org) framework.
 
 ## Prerequisites
 
@@ -18,9 +18,9 @@ $ npm run compile:prod
 ```
 This will create builds of your application in the `build/` directory, optimized to be served in production.
 
-## Serving the prod state locally
+## Serving the prod build locally
 
-You can also serve the compiled output like so:
+You can serve the compiled output like so:
 
 ```
 $ npm run compile:prod
